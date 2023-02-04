@@ -7,7 +7,7 @@ import { useState } from "react";
 import { api } from "../utils/api";
 
 const Todos = ({ todo }: any) => {
-  
+  console.log(todo);
   const ctx = api.useContext();
   const { mutate } = api.todo.startTodo.useMutation({
     onSuccess: () => ctx.todo.getTodos.refetch(),

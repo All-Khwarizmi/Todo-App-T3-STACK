@@ -7,7 +7,7 @@ import { useState } from "react";
 import { api } from "../utils/api";
 
 const Todos = ({ todo }: any) => {
-  
+  console.log(todo);
   const ctx = api.useContext();
   const { mutate } = api.todo.startTodo.useMutation({
     onSuccess: () => ctx.todo.getTodos.refetch(),
@@ -17,7 +17,7 @@ const Todos = ({ todo }: any) => {
     return mutate({ name: todo.target.name });
   };
   return (
-    <div className="text-1xl text-white">
+    <div  className="text-1xl text-white">
       <div
         key={todo.id}
         className="container flex items-center justify-center gap-12 px-4"
@@ -35,33 +35,37 @@ const Todos = ({ todo }: any) => {
   );
 };
 
-const DeleteTodo = ({ todo }: any) => {
-  const ctx = api.useContext();
-  const { mutate } = api.todo.deleteTodo.useMutation({
-    onSuccess: () => ctx.todo.getTodos.refetch(),
-  });
+const DeleteTodo = ({todo}: any) => {
+ const ctx = api.useContext();
+ const { mutate } = api.todo.deleteTodo.useMutation({
+   onSuccess: () => ctx.todo.getTodos.refetch(),
+ });
 
-  const deleteHandler = (todo: any) => {
-    return mutate({ name: todo.target.name });
-  };
+ const deleteHandler = (todo: any) => {
 
-  return (
-    <div className="p-2">
-      <div className="text-1xl flex flex-row gap-8 md:grid-cols-2">
-        <p className="w-1/3  ">{todo.name}</p>
-        <button
-          name={todo.name}
-          onClick={(todo) => {
-            return deleteHandler(todo);
-          }}
-          className="container flex items-center justify-center  gap-12 bg-red-800 px-4"
-        >
-          DELETE
-        </button>
-      </div>
-    </div>
-  );
-};
+  
+   return mutate({ name: todo.target.name });
+ };
+
+
+ return (
+   <div className="p-2">
+     <div className="text-1xl flex flex-row gap-8 md:grid-cols-2">
+       <p className="w-1/3  ">{todo.name}</p>
+       <button
+         name={todo.name}
+         onClick={(todo) => {
+           return deleteHandler(todo);
+         }}
+         className="container flex items-center justify-center  gap-12 bg-red-800 px-4"
+       >
+         DELETE
+       </button>
+     </div>
+   </div>
+ );
+
+}
 
 const Canva = () => {
   const todos = api.todo.getTodos.useQuery();
@@ -76,11 +80,13 @@ const Canva = () => {
     return mutate({ name: todo.target.name });
   };
 
+
   return (
-    <div className="w-300 grid  grid-rows-2 gap-5 text-white md:grid-cols-2">
+    <div className="w-300 grid  grid-rows-2 md:grid-cols-2 gap-5 text-white">
       <div className="w-90 min-h-max rounded bg-pink-500  p-3  ">
         <div className="">
-          <p>Not Started</p>
+
+        <p>Not Started</p>
         </div>
         <br />
         {todos?.data?.map((todo, index) => {
@@ -90,8 +96,10 @@ const Canva = () => {
                 key={todo.id}
                 className="text-1xl grid grid-cols-2 gap-6 md:grid-cols-2"
               >
-                <DeleteTodo todo={todo} />
-
+            
+    
+                  <DeleteTodo todo={todo} />
+       
                 <Todos todo={todo} />
               </div>
             );
@@ -105,7 +113,7 @@ const Canva = () => {
         {todos?.data?.map((todo, index) => {
           if (todo.status === "DONE") {
             return (
-              <div key={index} className="pt-5">
+              <div key={index} className='pt-5'>
                 <DeleteTodo todo={todo} />
               </div>
             );
@@ -162,7 +170,7 @@ const AddButton = () => {
         onChange={(e) => handleName(e)}
       />
       <button
-        type="button"
+      type="button"
         className="rounded bg-blue-500 p-2 py-2 px-4 font-bold text-white hover:bg-blue-700"
         onClick={handleAdd}
       >

@@ -2,7 +2,7 @@
   "overrides": [
     {
       "extends": [
-        "next"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       "files": ["*.ts", "*.tsx"],
       "parserOptions": {

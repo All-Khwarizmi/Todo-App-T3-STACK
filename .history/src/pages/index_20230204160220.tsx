@@ -50,7 +50,7 @@ const DeleteTodo = ({todo}: any) => {
  return (
    <div className="p-2">
      <div className="text-1xl flex flex-row gap-8 md:grid-cols-2">
-       <p className="w-1/3  ">{todo.name}</p>
+       <p className="w-1/3 p-3 ">{todo.name}</p>
        <button
          name={todo.name}
          onClick={(todo) => {

@@ -48,20 +48,7 @@ const DeleteTodo = ({todo}: any) => {
 
 
  return (
-   <div className="p-2">
-     <div className="text-1xl flex flex-row gap-8 md:grid-cols-2">
-       <p className="w-1/3  ">{todo.name}</p>
-       <button
-         name={todo.name}
-         onClick={(todo) => {
-           return deleteHandler(todo);
-         }}
-         className="container flex items-center justify-center  gap-12 bg-red-800 px-4"
-       >
-         DELETE
-       </button>
-     </div>
-   </div>
+  
  );
 
 }

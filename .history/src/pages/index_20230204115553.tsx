@@ -9,8 +9,8 @@ import { api } from "../utils/api";
 const Todos = () => {
   const todos = api.todo.getTodos.useQuery()
   const ctx = api.useContext()
-  const { mutate } = api.todo.deleteTodo.useMutation({
-    onSuccess : () => ctx.todo.getTodos.refetch()
+  const { mutate } = api.example.deleteTodo.useMutation({
+    onSuccess : () => ctx.example.getTodos.refetch()
   })
   const deleteHandler = (todo: any) => {
     console.log(todo, todo.target.name)
@@ -46,7 +46,7 @@ const Todos = () => {
 const AddButton = () => {
   const [name, setName] = useState("")
   const ctx = api.useContext()
-  const {mutate} = api.todo.addTodo.useMutation({onSuccess: () => ctx.todo.getTodos.refetch() })
+  const {mutate} = api.todo.addTodo.useMutation({onSuccess: () => ctx.example.getTodos.refetch() })
 
 const handleName = (e: any) => {
   e.preventDefault()

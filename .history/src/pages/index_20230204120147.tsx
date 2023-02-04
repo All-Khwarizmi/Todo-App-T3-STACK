@@ -46,7 +46,7 @@ const Todos = () => {
 const AddButton = () => {
   const [name, setName] = useState("")
   const ctx = api.useContext()
-  const {mutate} = api.todo.addTodo.useMutation({onSuccess: () => ctx.todo.getTodos.refetch() })
+  const {mutate} = api.todo.addTodo.useMutation({onSuccess: () => ctx.example.getTodos.refetch() })
 
 const handleName = (e: any) => {
   e.preventDefault()

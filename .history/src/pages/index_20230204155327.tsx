@@ -55,7 +55,7 @@ const DeleteTodo = ({todo}: any) => {
        onClick={(todo) => {
          return deleteHandler(todo);
        }}
-       className="container flex items-center bg-red-800  justify-center gap-12 px-4"
+       className="container flex items-center bg-red-800 w-1/3 justify-center gap-12 px-4"
      >
        DELETE
      </button>
@@ -199,7 +199,7 @@ const Home: NextPage = () => {
           <AddButton />
           <DeleteAllTodos />
 
-          <div className=" w-full rounded">
+          <div className=" rounded">
             <Canva />
           </div>
         </div>
